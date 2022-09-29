@@ -1,5 +1,4 @@
 from collections import Counter
-import json
 import PyPDF2
 import textract
 
@@ -12,7 +11,7 @@ def upload():
     if request.method == 'POST':
         f = request.files['file']
         pdfReader = PyPDF2.PdfFileReader(f)
-        
+
         num_pages = pdfReader.numPages
         count = 0
         text = ""
