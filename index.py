@@ -6,6 +6,7 @@ from flask import Flask, jsonify, request
 
 app = Flask(__name__)
 
+
 @app.route('/count', methods=['POST'])
 def upload():
     if request.method == 'POST':
@@ -31,6 +32,7 @@ def upload():
         result = count_words(text_from_PDF)
         return jsonify(unique_words=result[0], total_words=result[1])
 
+
 def count_words(words):
     count = Counter(words)
     unique_words = 0
@@ -38,9 +40,9 @@ def count_words(words):
     for word in count:
         if count[word] == 1:
             unique_words += 1
-    
+
     return unique_words, len(words)
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=False, host='0.0.0.0')
